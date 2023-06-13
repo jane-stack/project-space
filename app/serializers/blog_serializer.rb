@@ -1,5 +1,5 @@
 class BlogSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :author, :comments
+  attributes :id, :title, :content, :author, :comments
 
   def author
     {
@@ -16,7 +16,7 @@ class BlogSerializer < ActiveModel::Serializer
           id: comment.user.id,
           username: comment.user.username
         },
-        reply: comment.reply
+        content: comment.content
       }
     end
   end
