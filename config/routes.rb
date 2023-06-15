@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [:index]
   resources :blogs do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:index, :create, :destroy]
   end
 
   # User

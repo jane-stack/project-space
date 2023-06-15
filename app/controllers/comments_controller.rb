@@ -1,8 +1,14 @@
 class CommentsController < ApplicationController
     before_action :find_blog
     before_action :authorize, only: [:create]
-    before_action only: [:destroy] do
-        authorize_user_resource(@blog.user_id)
+    # before_action only: [:destroy] do
+    #     authorize_user_resource(@blog.user_id)
+    # end
+
+    def index
+        @blog = Blog.find(params[:blog_id])
+        @comment = @blog.comments
+        render json: @comment
     end
 
     # POST /blogs/:id/comments
@@ -27,7 +33,7 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.require(:comment).permit(:content)
+        params.permit(:content)
     end
 
     def find_blog

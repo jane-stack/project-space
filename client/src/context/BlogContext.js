@@ -12,10 +12,6 @@ const BlogProvider = ({ children }) => {
         })
     }, [])
 
-    const addBlog = blog => {
-        setBlogs([...blogs, blog]);
-    }
-
     const editBlog = newBlog => {
         const updatedBlogs = blogs.map(blog => {
             if(newBlog.id === blog.id) {
@@ -27,12 +23,7 @@ const BlogProvider = ({ children }) => {
         setBlogs(updatedBlogs);
     }
 
-    const deleteBlog = deleteBlog => {
-        const updatedBlogs = blogs.filter(blog => blog.id !== deleteBlog.id)
-        setBlogs(updatedBlogs);
-    }
-
-    return <BlogContext.Provider value={{ blogs, addBlog, editBlog, deleteBlog }}>{ children }</BlogContext.Provider>
+    return <BlogContext.Provider value={{ blogs, editBlog }}>{ children }</BlogContext.Provider>
 }
 
 export { BlogContext, BlogProvider }
