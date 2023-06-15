@@ -13,6 +13,7 @@ const BlogEdit = ({ blog, select, isEditing, setIsEditing, editBlog }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const editedPost = {
+            id: blog.id,
             title: title,
             content: content
         }
@@ -24,9 +25,7 @@ const BlogEdit = ({ blog, select, isEditing, setIsEditing, editBlog }) => {
             body: JSON.stringify(editedPost)
         })
         .then(resp => resp.json())
-        .then(data => {
-            editBlog(data)
-        })
+        .then(editBlog(editedPost))
 
         // refresh input after submitting form
         closeEditForm();

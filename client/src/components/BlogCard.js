@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import BlogEdit from "./BlogEdit";
 import CommentList from "./CommentList";
@@ -10,8 +10,14 @@ const BlogCard = ({ blog, deleteBlog, editBlog, select, setSelect }) => {
     const [ isCommenting, setIsCommenting ] = useState(false);
     const showCommentForm = () => setIsCommenting(isCommenting => !isCommenting);
 
-    const handleDelete = (id) => {
-        fetch(`/blogs/${id}`, {
+    useEffect(() => {
+        if (blog.select === blog.id) {
+            blog.setSelect(select)
+        }
+    }, [blog, select, setSelect])
+
+    const handleDelete = () => {
+        fetch(`/blogs/${blog.id}`, {
             method: "DELETE",
     })
     .then(resp => resp.json())

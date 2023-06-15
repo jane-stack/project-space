@@ -38,6 +38,7 @@ const CommentForm = ({ blog, addComment }) => {
                 addComment(data)
             }
         });
+        setContent("");
     }
 
     return (
