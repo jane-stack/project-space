@@ -8,6 +8,7 @@ import LoginPage from "../pages/LoginPage";
 import BlogList from "../pages/BlogList";
 import NewBlogForm from "../pages/NewBlogForm";
 import Home from "../pages/Home";
+import FriendList from "../pages/FriendList";
 
 function App() {
   const [blogs, setBlogs] = useState([]);
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/blogs"><BlogList blogs={blogs} setBlogs={setBlogs} /></Route>
                 <Route path="/create"><NewBlogForm addBlog={addBlog} /></Route>
                 <Route path="/login"><LoginPage /></Route>
+                <Route path="/friends"><FriendList /></Route>
                 <Route path="/"><Home /></Route>
               </Switch>
           </BlogProvider>

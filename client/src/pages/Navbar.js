@@ -29,6 +29,7 @@ const Navbar = () => {
             <>
             <NavLink to="/blogs" exact style={linkStyle}>Blogs</NavLink>
             <NavLink to="/create" exact style={linkStyle}>Create Blog</NavLink>
+            <NavLink to="/friends" exact style={linkStyle}>Friends</NavLink>
             <NavLink to="#" onClick={handleLogout} exact style={linkStyle}>Logout</NavLink>
             </>
         )
